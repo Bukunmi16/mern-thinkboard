@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import RateLimited from '../components/RateLimited'
 import { useState } from 'react'
 import axios from "axios"
+import toast from 'react-hot-toast' 
 
 const HomePage = () => {
 

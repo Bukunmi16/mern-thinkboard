@@ -13,11 +13,11 @@ dotenv.config();
 // Database connection
 
 // Middleware
+app.use(cors({
+    origin: "http://localhost:5173"
+}));
 app.use(express.json());
 app.use(rateLimiter);
-app.use(cors({
-    origin: 'http://localhost:5173'
-}));
 
 // Route
 app.use('/api/notes', notesRoutes);
