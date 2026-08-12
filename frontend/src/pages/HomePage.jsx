@@ -4,6 +4,7 @@ import RateLimited from '../components/RateLimited'
 import { useState } from 'react'
 import axios from "axios"
 import toast from 'react-hot-toast' 
+import NoteCard from '../components/NoteCard'
 
 const HomePage = () => {
 
@@ -38,6 +39,22 @@ const HomePage = () => {
     <div>
       <Navbar /> 
       {isRateLimited && <RateLimited/> }
+
+      <div className="max-w-7xl mx-auto mt-6 p-4">
+        {
+          loading && <div className='text-center text-primary py-5'>Loading Notes...</div>
+        }
+
+        { notes.length > 0 && !isRateLimited && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+            {notes.map((note) => (
+              <NoteCard key={note.id} note={note}/>              
+            ))}
+          
+          </div>
+        )}
+      </div>
       
     </div>
   )

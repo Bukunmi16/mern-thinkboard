@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'
 
 const App = () => {
   return (
-    <div data-theme="corporate" className='min-h-screen'>
+    <div data-theme="corporate" className='min-h-screen '>
     <Routes>
       <Route path="/" element={<HomePage/>} />
       <Route path="/create" element={<CreatePage/>} />
