@@ -4,7 +4,10 @@ import { Link, useLocation } from 'react-router'
 
 const Navbar = () => {
   const location = useLocation()
-  const hideNewNote = location.pathname === '/create'
+  const pathname = location.pathname
+  // Hide on explicit create page or on any route that matches a dynamic-id pattern
+  // e.g. /notedetail/:id or /notes/:id
+  const hideNewNote = pathname === '/create' || /^\/notes\/[^/]+$/.test(pathname)
 
   return (
     <div className='shadow-sm'>

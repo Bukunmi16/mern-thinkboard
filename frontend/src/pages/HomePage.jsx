@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import RateLimited from '../components/RateLimited'
+import NotesNotFound from '../components/NotesNotFound'
 import { useState } from 'react'
 import api from '../lib/axios'
 import toast from 'react-hot-toast' 
@@ -34,6 +35,7 @@ const HomePage = () => {
 
     fetchNotes()
   }, [])
+  
 
   return (
     <div>
@@ -45,11 +47,13 @@ const HomePage = () => {
           loading && <div className='text-center text-primary py-5'>Loading Notes...</div>
         }
 
+        {notes.length === 0 && !isRateLimited && !loading && <NotesNotFound/>}
+
         { notes.length > 0 && !isRateLimited && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-3 ">
 
             {notes.map((note) => (
-              <NoteCard key={note.id} note={note}/>              
+              <NoteCard key={note.id} note={note} setNotes={setNotes}/>              
             ))}
           
           </div>
